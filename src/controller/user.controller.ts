@@ -4,6 +4,7 @@ import { UserService } from "../service/user.service";
 import { UserDto } from "../dto/user";
 import { Validate } from "@midwayjs/validate";
 import { User } from "../entity/User";
+import { MoreThan } from "typeorm";
 
 @Controller("/user")
 export class UserController {
@@ -29,6 +30,9 @@ export class UserController {
 
   @Get("/page")
   async page(@Query('page') page: number, @Query('size') size: number) {
-    return await this.userService.page(page, size)
+    return await this.userService.page(page, size, {
+      name: '云天明1',
+      age: MoreThan(18)
+    })
   }
 }

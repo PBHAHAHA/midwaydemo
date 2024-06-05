@@ -19,7 +19,7 @@ export default {
         synchronize: true,
         logging: true,
         entities: [
-          '../entity/*.ts'
+          '../entity'
         ],
       }
     }

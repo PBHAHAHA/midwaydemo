@@ -30,12 +30,13 @@ export abstract class BaseService<T extends BaseEntity> {
   }
 
   async page(page: number, pageSize: number, where?: FindOptionsWhere<T>) {
+    console.log(page, pageSize, Number)
     const order: any = { create_time: 'desc' };
 
     const [data, total] = await this.getModel().findAndCount({
       where,
       order,
-      skip: page * pageSize,
+      skip: ((page-1) * pageSize),
       take: pageSize,
     });
 
